@@ -1,4 +1,27 @@
+import os 
+import torch
+import torch.nn as nn
+import pandas as pd
+from tqdm import tqdm
+from transformers import AlbertConfig, AlbertForSequenceClassification
 from pororo.models.brainbert import BrainRobertaModel
+
+def load_model(PATH='/content/drive/MyDrive/KB_NLP/kb-albert-char/model'):
+    tokenizer = KbAlbertCharTokenizer.from_pretrained('/content/drive/MyDrive/KB_NLP/kb-albert-char/model')
+    model = AlbertForSequenceClassification.from_pretrained('/content/drive/MyDrive/KB_NLP/kb-albert-char/model')
+    if torch.cuda.is_available():
+        device = torch.device('cuda:0')
+        model = model.to(device)
+    return tokenizer,model
+
+def load_data(PATH='https://raw.githubusercontent.com/kakaobrain/KorNLUDatasets/master/KorNLI/{split}.ko.tsv',split='train'):
+    if split == 'train':
+        PATH = PATH.format(split='snli_1.0_train')
+    elif split =='test':
+        PATH = PATH.format(split='xnli.test')
+    elif split =='dev':
+        PATH = PATH.format(split='xnli.dev')
+    return pd.read_csv(PATH,sep='\t')
 
 def Zero_Shot_TC(sent,labels,template="이 문장은 {label}에 관한 것이다."):
     model = BrainRobertaModel.load_model("bert/brainbert.base.ko.kornli", 'ko').eval()
@@ -11,21 +34,3 @@ def Zero_Shot_TC(sent,labels,template="이 문장은 {label}에 관한 것이다
         result[label] = round(prob, 2)
     return result
 
-def binary_score(score,label1,label2):
-    text=''
-    if score > 50:
-        text = f'강한 {label1}'
-    elif score>0:
-        text = f'약한 {label1}'
-    elif -50<score<0:
-        text = f'약한 {label2}'
-    elif score<-50:
-        text = f'강한 {label2}'
-    return text
-
-def Risk_Tolerance(text,return_logits=False):
-    result = Zero_Shot_TC(text,['위험 회피형','위험 추구형'],"이 문장은 {label} 성격을 가진다.")
-    risk_score = result['위험 추구형'] - result['위험 회피형']
-    if return_logits:
-        return binary_score(risk_score,'위험 추구형','위험 회피형'),risk_score
-    return binary_score(risk_score,'위험 추구형','위험 회피형')
