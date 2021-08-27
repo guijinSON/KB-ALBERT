@@ -1,7 +1,7 @@
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
 
-class TrainDataset(Dataset):
+class Dataset(Dataset):
     def __init__(self, sentence1, sentence2, label,tokenizer):
         self.sentence1 = sentence1
         self.sentence2 = sentence2
