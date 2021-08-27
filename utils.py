@@ -22,7 +22,7 @@ def load_data(PATH='https://raw.githubusercontent.com/kakaobrain/KorNLUDatasets/
     elif split =='dev':
         PATH = PATH.format(split='xnli.dev')
     csv = pd.read_csv(PATH,sep='\t')
-    csv = csv.dropna()
+    csv = csv.dropna(axis=0,how='any').reset_index(drop=True)
     return csv 
 
 def Zero_Shot_TC(sent,labels,template="이 문장은 {label}에 관한 것이다."):
