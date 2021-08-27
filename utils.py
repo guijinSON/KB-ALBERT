@@ -21,7 +21,9 @@ def load_data(PATH='https://raw.githubusercontent.com/kakaobrain/KorNLUDatasets/
         PATH = PATH.format(split='xnli.test')
     elif split =='dev':
         PATH = PATH.format(split='xnli.dev')
-    return pd.read_csv(PATH,sep='\t')
+    csv = pd.read_csv(PATH,sep='\t')
+    csv = csv.dropna()
+    return csv 
 
 def Zero_Shot_TC(sent,labels,template="이 문장은 {label}에 관한 것이다."):
     model = BrainRobertaModel.load_model("bert/brainbert.base.ko.kornli", 'ko').eval()
