@@ -10,7 +10,7 @@ from transformers import (
 )
 from transformers import AlbertConfig, AlbertForSequenceClassification
 from utils import load_model
-from data import Dataset
+from dataloader import Dataset
 
 #### For Colab ####
 #from google.colab import drive
