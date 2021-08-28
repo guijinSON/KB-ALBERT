@@ -36,3 +36,25 @@ def Zero_Shot_TC(sent,labels,template="이 문장은 {label}에 관한 것이다
         result[label] = round(prob, 2)
     return result
 
+def binary_score(score,label1,label2):
+    text=''
+    if score > 50:
+        text = f'강한 {label1}'
+    elif score>0:
+        text = f'약한 {label1}'
+    elif -50<score<0:
+        text = f'약한 {label2}'
+    elif score<-50:
+        text = f'강한 {label2}'
+    return text
+
+def increase_font():
+  from IPython.display import Javascript
+  display(Javascript('''
+  for (rule of document.styleSheets[0].cssRules){
+    if (rule.selectorText=='body') {
+      rule.style.fontSize = '17px'
+      break
+    }
+  }
+  '''))
