@@ -1,14 +1,7 @@
 from utils import Zero_Shot_TC,binary_score
 
-def Risk_Tolerance(text,return_logits=False):
-    result = Zero_Shot_TC(text,['위험 회피형','위험 추구형'],"이 문장은 {label} 성격을 가진다.")
-    risk_score = result['위험 추구형'] - result['위험 회피형']
-    if return_logits:
-        return binary_score(risk_score,'위험 추구형','위험 회피형'),risk_score
-    return binary_score(risk_score,'위험 추구형','위험 회피형')
-
-def Financial_Understanding(text,labels,tokenizer,model,return_logits=False):
-    weight = torch.load('/content/drive/MyDrive/KB_NLP/model_2_0.pth',map_location=torch.device('cpu')) #2_0
+def Financial_Understanding(text,labels,tokenizer,model,weight_path,return_logits=False):
+    weight = torch.load(weight_path,map_location=torch.device('cpu')) #2_0
     model.load_state_dict(weight)
     result = {}
     hypothesis = [f'해당 문장은 {label}에 대해 설명하고 있다.' for label in labels]
@@ -24,3 +17,12 @@ def Financial_Understanding(text,labels,tokenizer,model,return_logits=False):
     if return_logits:
         return output[m] , contradiction
     return f'해당 문장은 {output[m]}에 대한 이해를 보여주고 있다.'
+
+def Risk_Tolerance(text,return_logits=False):
+    result = Zero_Shot_TC(text,['위험 회피형','위험 추구형'],"이 문장은 {label} 성격을 가진다.")
+    risk_score = result['위험 추구형'] - result['위험 회피형']
+    if return_logits:
+        return binary_score(risk_score,'위험 추구형','위험 회피형'),risk_score
+    return binary_score(risk_score,'위험 추구형','위험 회피형')
+
+
