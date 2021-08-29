@@ -1,4 +1,5 @@
 from utils import Zero_Shot_TC,binary_score
+import torch
 
 def Financial_Understanding(text,labels,tokenizer,model,weight_path,return_logits=False):
     weight = torch.load(weight_path,map_location=torch.device('cpu')) #2_0

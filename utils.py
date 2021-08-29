@@ -3,12 +3,14 @@ import torch
 import torch.nn as nn
 import pandas as pd
 from tqdm import tqdm
-from transformers import AlbertConfig, AlbertForSequenceClassification
+from transformers import AlbertConfig, AlbertForSequenceClassification,AutoTokenizer
 from pororo.models.brainbert import BrainRobertaModel
+from kbalbert.tokenization_kbalbert import KbAlbertCharTokenizer 
 
 def load_model(PATH='/content/drive/MyDrive/KB_NLP/kb-albert-char/model'):
-    tokenizer = KbAlbertCharTokenizer.from_pretrained('/content/drive/MyDrive/KB_NLP/kb-albert-char/model')
-    model = AlbertForSequenceClassification.from_pretrained('/content/drive/MyDrive/KB_NLP/kb-albert-char/model')
+    tokenizer = KbAlbertCharTokenizer.from_pretrained(PATH)
+    #tokenizer = AutoTokenizer.from_pretrained(PATH)
+    model = AlbertForSequenceClassification.from_pretrained(PATH,num_labels=3)
     if torch.cuda.is_available():
         device = torch.device('cuda:0')
         model = model.to(device)
