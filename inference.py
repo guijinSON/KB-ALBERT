@@ -27,3 +27,20 @@ def Risk_Tolerance(text,return_logits=False):
     return binary_score(risk_score,'위험 추구형','위험 회피형')
 
 
+def ZIP(text,tokenizer,model,labels=['위험 회피','위험 감수'],return_logits=False):
+    weight = torch.load('/content/drive/MyDrive/KB_NLP/model_2_0.pth',map_location=torch.device('cpu')) #2_0
+    model.load_state_dict(weight)
+    result = {}
+    hypothesis = [f'해당 문장은 {label}에 대해 설명하고 있다.' for label in labels]
+    for label,h in zip(labels,hypothesis):
+        x = tokenizer.encode(text, h, max_length=64, return_tensors='pt',truncation=True)
+        logits = model(x).logits
+        probs = logits.softmax(dim=1)
+        entailment = probs.detach()[:,0]
+        contradiction = probs.detach()[:,2]
+        result[label] = entailment
+    output = dict(zip(result.values(),result.keys()))
+    m = max(output.keys())
+    if return_logits:
+        return output[m] , contradiction
+    return f'해당 문장은 {output[m]}의 성향을 가진다.'
