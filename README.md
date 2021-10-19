@@ -7,7 +7,7 @@ It leverages a pretrained Language Model [KB-ALBERT](https://github.com/KB-AI-Re
 1. pip install requirements.txt -> 필요한 패키지 설치
 2. demo.ipynb 실행 -> 파워 포인트에 담겨 있는 실행 사진들은 모두 해당 주피터 노트북에 기록되어 있습니다. 
 
-## Members 
+## Contributors
 -  강주연
 -  손규진 | [GUIJIN SON](https://github.com/guijinSON)
 -  최예린 
