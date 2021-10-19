@@ -2,10 +2,23 @@
 ZIP is a Zero-Shot Financial Risk Tolerance Classifier designed to infer the investment behavior of individuals.   
 It leverages a pretrained Language Model [KB-ALBERT](https://github.com/KB-AI-Research/KB-ALBERT) fine-tuned on [KorNLI](https://github.com/kakaobrain/KorNLUDatasets), a Korean Natural Language Inference(NLI) dataset, as text encoder for the Zero-Shot Topic Classification Pipeline. 
 
-## 사용 방법      
+<p align="left">
+  <img width="446" height="233" src="https://raw.githubusercontent.com/guijinSON/ZIP/main/assets/title.png">
+</p>
 
-1. pip install requirements.txt -> 필요한 패키지 설치
-2. demo.ipynb 실행 -> 파워 포인트에 담겨 있는 실행 사진들은 모두 해당 주피터 노트북에 기록되어 있습니다. 
+## Demo
+Make sure you have the adequate dependencies installed before running the demo.   
+Path for model weights should be modified beforehand. 
+```python
+
+from ZIP.inference import ZIP
+ZIP('적금, 주식, 펀드 등에 분산 투자를 통해 손실 위험을 최대한 회피한다.',tokenizer,model,labels=['분산 투자','집중 투자'])
+
+```
+
+<p align="left">
+  <img width="600" height="180" src="https://raw.githubusercontent.com/guijinSON/ZIP/main/assets/demo_1.png">
+</p>
 
 ## Contributors
 -  강주연
