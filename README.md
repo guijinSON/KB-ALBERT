@@ -29,7 +29,9 @@ ZIP('적금, 주식, 펀드 등에 분산 투자를 통해 손실 위험을 최�
 
 ## Acknowledgements 
 Project ZIP was conducted as a part of Future AI Challenge (KB Bank), 2021.   
-Special thanks to [KB-AI-Research](https://github.com/KB-AI-Research/KB-ALBERT) for providing the pretrained KB-ALBERT model.
+Special thanks to [KB-AI-Research](https://github.com/KB-AI-Research/KB-ALBERT) for providing the pretrained KB-ALBERT model and [KakaoBrain](https://github.com/kakaobrain/KorNLUDatasets) for making Korean NLI datasets publicly available.
+
+
 
 ## References
 
