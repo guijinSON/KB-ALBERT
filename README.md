@@ -6,7 +6,7 @@ It leverages a pretrained Language Model [KB-ALBERT](https://github.com/KB-AI-Re
   <img width="446" height="233" src="https://raw.githubusercontent.com/guijinSON/ZIP/main/assets/title.png">
 </p> 
 
-Awarded Top-10 at Future AI Challenge(KB Bank), 2021.
+Awarded <strong> 6th place </strong> at Future AI Challenge(KB Bank), 2021.
 
 ## Demo
 Make sure you have the adequate dependencies installed before running the demo.   
