@@ -1,6 +1,8 @@
-# ZIP: Zero-Shot Financial Risk Tolerance Classifier 
-ZIP is a Zero-Shot Financial Risk Tolerance Classifier designed to infer the investment behavior of individuals.   
-It leverages a pretrained Language Model [KB-ALBERT](https://github.com/KB-AI-Research/KB-ALBERT) fine-tuned on [KorNLI](https://github.com/kakaobrain/KorNLUDatasets), a Korean Natural Language Inference(NLI) dataset, as text encoder for the Zero-Shot Topic Classification Pipeline.   
+# ZIP
+This repository contains code for ZIP, a Zero-Shot Classifier for Financial Risk Tolerance Probing. This project was conducted as a part of [Future Finance A.I. Challenge](https://2021-icfss.org/?page_id=203) organized by KB Financial Group Inc.
+
+## Project Explanation
+This project cites the framework proposed by [Shashank Srivastava](https://aclanthology.org/P18-1029/) to transform a Pretrained Language Model(PLM) fine-tuned on a Natural Language Inference(NLI) dataset into a Zero-Shot Classifier. The output model, ZIP, is used to infer Financial Risk Tolerance by comprehending the investment opinions of eash individuals. ZIP leverages a pretrained Language Model [KB-ALBERT](https://github.com/KB-AI-Research/KB-ALBERT) fine-tuned on [KorNLI](https://github.com/kakaobrain/KorNLUDatasets), a Korean Natural Language Inference(NLI) dataset, as text encoder for the Zero-Shot Topic Classification Pipeline.   
 
 <p align="middle">
   <img width="446" height="233" src="https://raw.githubusercontent.com/guijinSON/ZIP/main/assets/title.png">
