@@ -61,7 +61,7 @@ pandocfilters @ file:///opt/concourse/worker/volumes/live/315ac9bb-93fd-4adc-679
 parso @ file:///tmp/build/80754af9/parso_1617223946239/work
 pexpect @ file:///tmp/build/80754af9/pexpect_1605563209008/work
 pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
-Pillow==8.3.1
+pillow>=8.3.2
 pororo==0.4.2
 portalocker==2.3.2
 prometheus-client @ file:///tmp/build/80754af9/prometheus_client_1623189609245/work
